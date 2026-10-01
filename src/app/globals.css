@@ -1,24 +1,633 @@
+
 @import "tailwindcss";
 
+/* =========================================================
+   SILVA'S BARBEARIA
+   Design System — Preto • Grafite • Prata
+   ========================================================= */
+
 :root {
-  --color-primary: #2563eb;
-  --color-dark: #0f172a;
-  --color-muted: #475569;
-  --color-soft: #f8fafc;
+  /* Fundos */
+  --background: #eeeeec;
+  --background-secondary: #e4e4e1;
+  --surface: #f7f7f5;
+  --surface-white: #ffffff;
+
+  /* Escuros */
+  --dark: #0c0c0c;
+  --dark-secondary: #141414;
+  --dark-soft: #1c1c1c;
+  --graphite: #252525;
+  --graphite-light: #333333;
+
+  /* Textos */
+  --foreground: #151515;
+  --text-secondary: #686868;
+  --text-muted: #929292;
+
+  --text-light: #f5f5f5;
+  --text-light-secondary: rgba(255, 255, 255, 0.72);
+  --text-light-muted: rgba(255, 255, 255, 0.48);
+
+  /* Marca / prata */
+  --brand: #9b9b98;
+  --brand-hover: #b7b7b3;
+  --brand-dark: #737371;
+  --brand-light: #d0d0cc;
+  --brand-soft: #dededb;
+  --brand-transparent: rgba(155, 155, 152, 0.14);
+
+  --silver: #c5c5c1;
+  --silver-light: #deded9;
+  --silver-dark: #8a8a87;
+
+  /* Bordas */
+  --border: #d0d0cd;
+  --border-light: #ddddda;
+  --border-soft: #e5e5e2;
+
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-dark-hover: rgba(255, 255, 255, 0.25);
+
+  /* Estados */
+  --success: #47785a;
+  --error: #a84444;
+
+  /* Tipografia */
+  --font-body: "Inter", Arial, Helvetica, sans-serif;
+  --font-display: "Archivo", Arial, Helvetica, sans-serif;
+
+  /* Layout */
+  --container: 1280px;
+
+  /* Radius */
+  --radius-xs: 0.5rem;
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
+  --radius-xl: 2.5rem;
+  --radius-full: 999px;
+
+  /* Sombras */
+  --shadow-xs: 0 2px 10px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.13);
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.28);
+  --shadow-brand: 0 14px 32px rgba(0, 0, 0, 0.14);
+
+  /* Transições */
+  --transition-fast: 150ms ease;
+  --transition-base: 220ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Navbar */
+  --navbar-background: #0c0c0c;
+  --navbar-text: #ffffff;
+  --navbar-text-hover: #c5c5c1;
+  --navbar-border: rgba(255, 255, 255, 0.1);
+
+  /* Seções */
+  --hero-background: #eeeeec;
+  --section-light: #eeeeec;
+  --section-white: #f7f7f5;
+  --section-gray: #e4e4e1;
+  --section-dark: #111111;
+  --section-graphite: #1a1a1a;
+}
+
+/* =========================================================
+   TAILWIND THEME
+   ========================================================= */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 86px;
 }
 
+html,
 body {
-  font-family: var(--font-jakarta), sans-serif;
-  background: #ffffff;
-  color: var(--color-dark);
+  max-width: 100%;
   overflow-x: hidden;
 }
 
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
 ::selection {
-  background: var(--color-primary);
-  color: white;
+  background: var(--silver);
+  color: var(--dark);
+}
+
+/* =========================================================
+   TIPOGRAFIA
+   ========================================================= */
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.heading-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.94;
+}
+
+.heading-section {
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* =========================================================
+   IDENTIDADE
+   ========================================================= */
+
+.brand-text {
+  color: var(--brand-dark);
+}
+
+.brand-bg {
+  background: var(--silver);
+}
+
+.brand-border {
+  border-color: var(--silver);
+}
+
+.brand-soft-bg {
+  background: var(--brand-soft);
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.site-container {
+  width: min(calc(100% - 2.5rem), var(--container));
+  margin-inline: auto;
+}
+
+/* =========================================================
+   SEÇÕES
+   ========================================================= */
+
+.section {
+  padding-block: 6rem;
+}
+
+.section-light {
+  background: var(--section-light);
+}
+
+.section-white {
+  background: var(--section-white);
+}
+
+.section-gray {
+  background: var(--section-gray);
+}
+
+.section-dark {
+  background: var(--section-dark);
+  color: var(--text-light);
+}
+
+.section-graphite {
+  background: var(--section-graphite);
+  color: var(--text-light);
+}
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  color: #686868;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 28px;
+  height: 1px;
+
+  background: #929292;
+}
+
+/* =========================================================
+   BOTÕES
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  min-height: 48px;
+
+  padding: 0.85rem 1.5rem;
+
+  border: 1px solid transparent;
+  border-radius: 999px;
+
+  font-size: 0.875rem;
+  font-weight: 650;
+  line-height: 1;
+
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Principal */
+
+.btn-primary {
+  background: var(--silver);
+  color: var(--dark);
+
+  box-shadow: var(--shadow-brand);
+}
+
+.btn-primary:hover {
+  background: var(--silver-light);
+}
+
+/* Escuro */
+
+.btn-dark {
+  background: var(--dark);
+  color: #ffffff;
+}
+
+.btn-dark:hover {
+  background: var(--graphite);
+}
+
+/* Outline */
+
+.btn-outline {
+  border-color: var(--border);
+  background: transparent;
+  color: var(--foreground);
+}
+
+.btn-outline:hover {
+  border-color: var(--foreground);
+  background: var(--foreground);
+  color: #ffffff;
+}
+
+/* Outline em fundo escuro */
+
+.btn-outline-light {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: #ffffff;
+}
+
+.btn-outline-light:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--dark);
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+
+  background: var(--surface);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.card-dark {
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+
+  background: var(--dark-secondary);
+  color: #ffffff;
+}
+
+/* =========================================================
+   IMAGENS
+   ========================================================= */
+
+.image-frame {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: var(--radius-lg);
+
+  background: var(--background-secondary);
+}
+
+.image-frame img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.image-frame:hover img {
+  transform: scale(1.035);
+}
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.4rem;
+
+  padding: 0.45rem 0.75rem;
+
+  border-radius: 999px;
+
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.badge-brand {
+  background: var(--silver);
+  color: var(--dark);
+}
+
+.badge-light {
+  border: 1px solid var(--border);
+
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--foreground);
+
+  backdrop-filter: blur(10px);
+}
+
+.badge-dark {
+  border: 1px solid var(--border-dark);
+
+  background: rgba(12, 12, 12, 0.75);
+  color: #ffffff;
+
+  backdrop-filter: blur(10px);
+}
+
+/* =========================================================
+   AVALIAÇÕES
+   ========================================================= */
+
+.rating-stars {
+  display: flex;
+  align-items: center;
+
+  gap: 0.2rem;
+
+  color: var(--silver-dark);
+}
+
+/* =========================================================
+   DIVISORES
+   ========================================================= */
+
+.divider {
+  width: 100%;
+  height: 1px;
+
+  background: var(--border-light);
+}
+
+.divider-dark {
+  width: 100%;
+  height: 1px;
+
+  background: var(--border-dark);
+}
+
+/* =========================================================
+   SCROLLBAR HORIZONTAL
+   ========================================================= */
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--silver);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   ANIMAÇÕES
+   ========================================================= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 600ms ease both;
+}
+
+.animate-fade-in {
+  animation: fade-in 600ms ease both;
+}
+
+/* =========================================================
+   DESKTOP SCROLLBAR
+   ========================================================= */
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid var(--background);
+    border-radius: 999px;
+
+    background: #b8b8b5;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #929292;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+  :root {
+    --radius-lg: 1.5rem;
+    --radius-xl: 2rem;
+  }
+
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  .site-container {
+    width: min(calc(100% - 2rem), var(--container));
+  }
+
+  .section {
+    padding-block: 4.5rem;
+  }
+
+  .btn {
+    min-height: 46px;
+    padding: 0.8rem 1.25rem;
+  }
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

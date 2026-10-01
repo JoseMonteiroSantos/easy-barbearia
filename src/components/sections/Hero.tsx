@@ -1,125 +1,208 @@
 import {
-  ArrowRight,
-  CheckCircle2,
-  MousePointerClick,
-  ShieldCheck,
-  Sparkles,
+  ArrowDown,
+  CalendarDays,
+  MapPin,
   Star,
-  Zap,
 } from "lucide-react";
 
-import Badge from "@/src/components/ui/Badge";
-import Button from "@/src/components/ui/Button";
 import Container from "@/src/components/ui/Container";
+
+const BOOKING_URL = "https://sites.appbarber.com.br/ousebarbearialt-0vas";
 
 export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-white pt-36 pb-24 lg:pt-44 lg:pb-32"
+      className="relative overflow-hidden bg-[#eeeeec] pt-[76px] lg:pt-[86px]"
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.14),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(219,234,254,0.8),transparent_35%)]" />
+      {/* Luz de fundo bem sutil */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-48 top-24 h-[500px] w-[500px] rounded-full bg-white/50 blur-[100px]"
+      />
 
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-2">
-          <div>
-            <Badge>
-              <Sparkles size={14} />
-              Landing Page Premium
-            </Badge>
+        <div className="grid min-h-[calc(100svh-76px)] items-center gap-10 py-10 sm:py-14 lg:min-h-[calc(100vh-86px)] lg:grid-cols-[0.92fr_1.08fr] lg:gap-14 lg:py-16">
+          {/* =================================================
+              CONTEÚDO
+              ================================================= */}
 
-            <h1 className="mt-6 max-w-2xl text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Crie uma presença digital que realmente gera clientes.
+          <div className="relative z-10 lg:py-10">
+            <span className="eyebrow">
+              Barbearia em Belo Horizonte
+            </span>
+
+            <h1 className="heading-display mt-6 max-w-[720px] text-[clamp(3.4rem,8vw,7rem)] text-[#151515]">
+              Seu estilo.
+              <br />
+
+              <span className="text-[#555553]">
+                Nossa
+                <br />
+                identidade.
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-              O Easy Landing™ é um modelo de Landing Page moderno, rápido e
-              focado em conversão para profissionais e empresas que querem
-              transformar visitantes em contatos.
+            <p className="mt-7 max-w-xl text-[15px] leading-7 text-[#686868] sm:text-base sm:leading-8">
+              Mais que um corte, uma experiência feita para quem
+              valoriza estilo, cuidado e atenção aos detalhes.
+              Conheça a Silva&apos;s Barbearia e encontre o seu
+              próximo visual.
             </p>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-              <Button href="#contato">
-                Solicitar orçamento
-                <ArrowRight size={18} />
-              </Button>
+            {/* BOTÕES */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#ffffff" }}
+                className="
+                  btn
+                  sm:min-w-[190px]
+                  border-[#111111]
+                  bg-[#111111]
+                  shadow-[0_12px_30px_rgba(0,0,0,0.16)]
+                  transition-all
+                  duration-200
+                  hover:border-[#292929]
+                  hover:bg-[#292929]
+                  hover:shadow-[0_16px_35px_rgba(0,0,0,0.20)]
+                "
+            >
+              <CalendarDays
+                size={18}
+                color="#ffffff"
+              />
 
-              <Button href="#beneficios" variant="outline">
-                Ver benefícios
-              </Button>
+              <span style={{ color: "#ffffff" }}>
+                Agendar horário
+              </span>
+            </a>
+
+              <a
+                href="#servicos"
+                className="btn btn-outline sm:min-w-[180px]"
+              >
+                Conhecer serviços
+
+                <ArrowDown size={17} />
+              </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-6 text-sm font-medium text-slate-600">
-              <span className="flex items-center gap-2">
-                <CheckCircle2 size={18} className="text-blue-600" />
-                Entrega rápida
-              </span>
+            {/* PROVA SOCIAL */}
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4 border-t border-[#d0d0cd] pt-6">
+              <div>
+                <div className="flex items-center gap-1 text-[#737371]">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      size={14}
+                      fill="currentColor"
+                      strokeWidth={1.5}
+                    />
+                  ))}
+                </div>
 
-              <span className="flex items-center gap-2">
-                <ShieldCheck size={18} className="text-blue-600" />
-                SEO básico incluso
-              </span>
+                <p className="mt-1.5 text-xs font-medium text-[#686868]">
+                  Experiência aprovada pelos clientes
+                </p>
+              </div>
 
-              <span className="flex items-center gap-2">
-                <MousePointerClick size={18} className="text-blue-600" />
-                Foco em conversão
-              </span>
+              <div className="hidden h-9 w-px bg-[#d0d0cd] sm:block" />
+
+              <div className="flex items-center gap-2 text-xs font-medium text-[#686868]">
+                <MapPin
+                  size={15}
+                  className="text-[#737371]"
+                />
+
+                Castelo • Belo Horizonte
+              </div>
             </div>
           </div>
 
+          {/* =================================================
+              VÍDEO PRINCIPAL
+              ================================================= */}
+
           <div className="relative">
-            <div className="absolute -left-8 top-10 hidden rounded-2xl border border-slate-100 bg-white p-4 shadow-xl shadow-slate-200/70 lg:block">
-              <div className="flex items-center gap-2 text-sm font-semibold text-slate-900">
-                <Zap size={16} className="text-blue-600" />
-                Performance 95+
-              </div>
-            </div>
+            <div className="relative overflow-hidden rounded-[1.75rem] bg-[#0c0c0c] shadow-[0_30px_80px_rgba(0,0,0,0.16)] sm:rounded-[2.5rem]">
+              <div className="relative aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] lg:max-h-[720px]">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Silva's Barbearia"
+                  className="absolute inset-0 h-full w-full object-cover"
+                >
+                  <source
+                    src="/videos/hero-barbearia.mp4"
+                    type="video/mp4"
+                  />
 
-            <div className="absolute -right-4 bottom-10 hidden rounded-2xl border border-slate-100 bg-white p-4 shadow-xl shadow-slate-200/70 lg:block">
-              <div className="flex items-center gap-1 text-yellow-400">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star key={index} size={15} fill="currentColor" />
-                ))}
-              </div>
-              <p className="mt-1 text-xs font-semibold text-slate-600">
-                Experiência premium
-              </p>
-            </div>
+                  Seu navegador não suporta vídeos HTML5.
+                </video>
 
-            <div className="rounded-[2rem] border border-slate-200 bg-white p-4 shadow-2xl shadow-blue-950/10">
-              <div className="overflow-hidden rounded-[1.5rem] border border-slate-100 bg-slate-950">
-                <div className="flex items-center gap-2 border-b border-white/10 px-5 py-4">
-                  <span className="h-3 w-3 rounded-full bg-red-400" />
-                  <span className="h-3 w-3 rounded-full bg-yellow-400" />
-                  <span className="h-3 w-3 rounded-full bg-green-400" />
+                {/* Gradiente para leitura dos textos */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/10" />
+
+                {/* Badge superior */}
+                <div className="absolute left-5 top-5 sm:left-7 sm:top-7">
+                  <span className="inline-flex items-center rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-md">
+                    Silva&apos;s Barbearia
+                  </span>
                 </div>
 
-                <div className="bg-white p-6">
-                  <div className="mb-6 flex items-center justify-between">
-                    <div className="h-8 w-28 rounded-full bg-blue-100" />
-                    <div className="h-8 w-20 rounded-full bg-blue-600" />
-                  </div>
+                {/* Conteúdo inferior */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                  <div className="flex items-end justify-between gap-4">
+                    <div>
+                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d0d0cc]">
+                        Experiência Silva&apos;s
+                      </span>
 
-                  <div className="space-y-3">
-                    <div className="h-5 w-3/4 rounded-full bg-slate-900" />
-                    <div className="h-5 w-2/3 rounded-full bg-slate-900" />
-                    <div className="h-3 w-full rounded-full bg-slate-200" />
-                    <div className="h-3 w-5/6 rounded-full bg-slate-200" />
-                  </div>
+                      <p className="font-display mt-2 max-w-xs text-xl font-semibold leading-tight text-white sm:text-2xl">
+                        Cuidado em cada detalhe.
+                      </p>
+                    </div>
 
-                  <div className="mt-6 h-11 w-40 rounded-2xl bg-blue-600" />
-
-                  <div className="mt-8 grid grid-cols-3 gap-3">
-                    <div className="h-24 rounded-2xl bg-blue-50" />
-                    <div className="h-24 rounded-2xl bg-slate-100" />
-                    <div className="h-24 rounded-2xl bg-blue-50" />
+                    <span className="hidden rounded-full border border-white/20 bg-black/30 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.12em] text-white/80 backdrop-blur-md sm:block">
+                      Belo Horizonte
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </Container>
+
+      {/* =====================================================
+          RODAPÉ DA HERO
+          ===================================================== */}
+
+      <div className="border-t border-[#d0d0cd]">
+        <Container>
+          <div className="flex min-h-14 items-center justify-center py-3 text-center sm:justify-between sm:text-left">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7d7d7a]">
+              Corte • Barba • Estilo • Cuidado
+            </span>
+
+            <a
+              href="#servicos"
+              className="hidden items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#686868] transition hover:text-[#151515] sm:flex"
+            >
+              Descubra nossos serviços
+
+              <ArrowDown size={13} />
+            </a>
+          </div>
+        </Container>
+      </div>
     </section>
   );
 }
