@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #2563eb;
+  --color-dark: #0f172a;
+  --color-muted: #475569;
+  --color-soft: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-jakarta), sans-serif;
+  background: #ffffff;
+  color: var(--color-dark);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
