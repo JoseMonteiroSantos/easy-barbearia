@@ -1,8 +1,14 @@
+"use client";
+
+import { useState } from "react";
+
 import {
   ArrowDown,
   CalendarDays,
   MapPin,
   Star,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 
 import Container from "@/src/components/ui/Container";
@@ -10,6 +16,9 @@ import Container from "@/src/components/ui/Container";
 const BOOKING_URL = "https://sites.appbarber.com.br/ousebarbearialt-0vas";
 
 export default function Hero() {
+
+const [isMuted, setIsMuted] = useState(true);
+
   return (
     <section
       id="inicio"
@@ -122,62 +131,156 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* =================================================
-              VÍDEO PRINCIPAL
-              ================================================= */}
+         
+  {/* =================================================
+    VÍDEO PRINCIPAL
+    ================================================= */}
 
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-[1.75rem] bg-[#0c0c0c] shadow-[0_30px_80px_rgba(0,0,0,0.16)] sm:rounded-[2.5rem]">
-              <div className="relative aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] lg:max-h-[720px]">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  aria-label="Silva's Barbearia"
-                  className="absolute inset-0 h-full w-full object-cover"
+        <div className="relative">
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-[#0c0c0c] shadow-[0_30px_80px_rgba(0,0,0,0.16)] sm:rounded-[2.5rem]">
+            
+            <div
+              className="
+                relative
+                aspect-[4/5]
+                sm:aspect-[5/6]
+                lg:aspect-[5/6]
+                lg:max-h-[680px]
+                xl:aspect-[6/7]
+                xl:max-h-[720px]
+              "
+            >
+              <video
+                autoPlay
+                muted={isMuted}
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Silva's Barbearia"
+                className="
+                  absolute
+                  inset-0
+                  h-full
+                  w-full
+                  object-cover
+                  object-center
+                  lg:scale-[1.05]
+                "
+              >
+                <source
+                  src="/videos/hero-barbearia.mp4"
+                  type="video/mp4"
+                />
+
+                Seu navegador não suporta vídeos HTML5.
+              </video>
+
+              {/* Gradiente */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/10" />
+
+              {/* Badge superior */}
+              <div className="absolute left-5 top-5 sm:left-7 sm:top-7">
+                <span
+                  style={{ color: "#ffffff" }}
+                  className="
+                    inline-flex
+                    items-center
+                    rounded-full
+                    border
+                    border-white/20
+                    bg-black/20
+                    px-3
+                    py-2
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.2em]
+                    backdrop-blur-md
+                  "
                 >
-                  <source
-                    src="/videos/hero-barbearia.mp4"
-                    type="video/mp4"
-                  />
+                  Silva&apos;s Barbearia
+                </span>
+              </div>
 
-                  Seu navegador não suporta vídeos HTML5.
-                </video>
+              {/* Controle de áudio */}
+              <button
+                type="button"
+                onClick={() => setIsMuted((current) => !current)}
+                aria-label={isMuted ? "Ativar som do vídeo" : "Desativar som do vídeo"}
+                title={isMuted ? "Ativar som" : "Desativar som"}
+                className="
+                  absolute
+                  right-5
+                  top-5
+                  z-20
+                  flex
+                  h-10
+                  w-10
+                  items-center
+                  justify-center
+                  rounded-full
+                  border
+                  border-white/20
+                  bg-black/30
+                  text-white
+                  backdrop-blur-md
+                  transition-all
+                  duration-200
+                  hover:bg-black/50
+                  active:scale-95
+                  sm:right-7
+                  sm:top-7
+                "
+              >
+                {isMuted ? (
+                  <VolumeX size={17} color="#ffffff" />
+                ) : (
+                  <Volume2 size={17} color="#ffffff" />
+                )}
+              </button>
 
-                {/* Gradiente para leitura dos textos */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/10" />
-
-                {/* Badge superior */}
-                <div className="absolute left-5 top-5 sm:left-7 sm:top-7">
-                  <span className="inline-flex items-center rounded-full border border-white/20 bg-black/20 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-md">
-                    Silva&apos;s Barbearia
-                  </span>
-                </div>
-
-                {/* Conteúdo inferior */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-                  <div className="flex items-end justify-between gap-4">
-                    <div>
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d0d0cc]">
-                        Experiência Silva&apos;s
-                      </span>
-
-                      <p className="font-display mt-2 max-w-xs text-xl font-semibold leading-tight text-white sm:text-2xl">
-                        Cuidado em cada detalhe.
-                      </p>
-                    </div>
-
-                    <span className="hidden rounded-full border border-white/20 bg-black/30 px-4 py-2 text-[10px] font-medium uppercase tracking-[0.12em] text-white/80 backdrop-blur-md sm:block">
-                      Belo Horizonte
+              {/* Conteúdo inferior */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+                <div className="flex items-end justify-between gap-4">
+                  <div>
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#d0d0cc]">
+                      Experiência Silva&apos;s
                     </span>
+
+                    <p
+                      style={{ color: "#ffffff" }}
+                      className="font-display mt-2 max-w-xs text-xl font-semibold leading-tight sm:text-2xl"
+                    >
+                      Cuidado em cada detalhe.
+                    </p>
                   </div>
+
+                  <span
+                    style={{ color: "rgba(255,255,255,0.8)" }}
+                    className="
+                      hidden
+                      rounded-full
+                      border
+                      border-white/20
+                      bg-black/30
+                      px-4
+                      py-2
+                      text-[10px]
+                      font-medium
+                      uppercase
+                      tracking-[0.12em]
+                      backdrop-blur-md
+                      sm:block
+                    "
+                  >
+                    Belo Horizonte
+                  </span>
                 </div>
               </div>
             </div>
-
           </div>
+        </div>
+
         </div>
       </Container>
 
