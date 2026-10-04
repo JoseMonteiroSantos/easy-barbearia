@@ -175,8 +175,6 @@ const [isMuted, setIsMuted] = useState(true);
                 Seu navegador não suporta vídeos HTML5.
               </video>
 
-              {/* Gradiente */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/5 to-black/10" />
 
               {/* Badge superior */}
               <div className="absolute left-5 top-5 sm:left-7 sm:top-7">
